@@ -38,3 +38,12 @@ pipeline {
         }
     }
 }
+post {
+    failure {
+        echo 'El build falló 😥'
+        // Aquí puedes usar mail o Slack si está configurado
+    }
+    success {
+        echo '¡Build exitoso! 🎉'
+    }
+}
