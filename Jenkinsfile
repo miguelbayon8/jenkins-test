@@ -1,19 +1,39 @@
 pipeline {
     agent any
+
     stages {
-        stage('Build') {
+        stage('Preparar entorno') {
             steps {
-                echo 'Building...'
+                sh 'echo "Preparando entorno de trabajo..."'
+                sh 'mkdir -p build'
             }
         }
-        stage('Test') {
+
+        stage('Instalar dependencias') {
             steps {
-                echo 'Testing...'
+                sh 'echo "Instalando dependencias (simulado)..."'
+                sh 'sleep 2'  // Simula instalación
             }
         }
-        stage('Deploy') {
+
+        stage('Compilar') {
             steps {
-                echo 'Deploying...'
+                sh 'echo "Compilando proyecto..."'
+                sh 'touch build/app'
+            }
+        }
+
+        stage('Pruebas') {
+            steps {
+                sh 'echo "Ejecutando pruebas..."'
+                sh 'exit 0'  // Simula pruebas exitosas (cambia a 1 para forzar error)
+            }
+        }
+
+        stage('Despliegue') {
+            steps {
+                sh 'echo "Desplegando aplicación..."'
+                sh 'mv build/app /tmp/app-desplegado'
             }
         }
     }
