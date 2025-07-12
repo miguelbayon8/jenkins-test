@@ -1,1 +1,6 @@
-cambio de prueba para jenkins
+<<<<<<< HEAD
+cambio de prueba para ke kind
+=======
+# jenkins-test
+repositorio para probar ke kind
+>>>>>>> main
