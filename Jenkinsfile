@@ -1,49 +1,20 @@
 pipeline {
     agent any
-
     stages {
-        stage('Preparar entorno') {
+        stage('Build') {
             steps {
-                sh 'echo "Preparando entorno de trabajo..."'
-                sh 'mkdir -p build'
+                echo 'Construyendo el proyecto...'
             }
         }
-
-        stage('Instalar dependencias') {
+        stage('Test') {
             steps {
-                sh 'echo "Instalando dependencias (simulado)..."'
-                sh 'sleep 2'  // Simula instalación
+                echo 'Ejecutando pruebas...'
             }
         }
-
-        stage('Compilar') {
+        stage('Deploy') {
             steps {
-                sh 'echo "Compilando proyecto..."'
-                sh 'touch build/app'
+                echo 'Desplegando la aplicación...'
             }
         }
-
-        stage('Pruebas') {
-            steps {
-                sh 'echo "Ejecutando pruebas..."'
-                sh 'exit 0'  // Simula pruebas exitosas (cambia a 1 para forzar error)
-            }
-        }
-
-        stage('Despliegue') {
-            steps {
-                sh 'echo "Desplegando aplicación..."'
-                sh 'mv build/app /tmp/app-desplegado'
-            }
-        }
-    }
-}
-post {
-    failure {
-        echo 'El build falló 😥'
-        // Aquí puedes usar mail o Slack si está configurado
-    }
-    success {
-        echo '¡Build exitoso! 🎉'
     }
 }
